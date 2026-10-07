@@ -51,7 +51,6 @@ async function registerUser(req, res) {
 
 async function loginUser(req, res) {
   try {
-    async function loginUser(req, res) {
       const { email, password } = req.body;
 
       let existingUser = await userModel.findOne({ email });
@@ -89,7 +88,6 @@ async function loginUser(req, res) {
         role: existingUser.role,
         token: generateToken(existingUser),
       });
-    }
   } catch (error) {
     res.status(500).json({
       message: "Login failed. Internal server error",

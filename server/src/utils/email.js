@@ -14,10 +14,10 @@ const sendOtpEmail = async (email, otp, type) => {
   let title = type === 'account-verification' ? 'Verify your eventora account' : 'Verify your event booking';
 
   const mailOptions = {
-    from: `Your App Name <${process.env.EMAIL_USER}>`,
+    from: `Eventora ${process.env.EMAIL_USER}`,
     to: email,
     subject: title,
-    text: `Hello,\n\nYour OTP code for ${purposeText} is: ${otp}.\n\nThis code is valid for 5 minutes. Do not share this code with anyone.`,
+    text: `Hello,\n\nYour OTP code for ${title} is: ${otp}.\n\nThis code is valid for 5 minutes. Do not share this code with anyone.`,
     text: `Your OTP code is: ${otp}`,
   };
 
@@ -35,7 +35,7 @@ const sendBookingEmail = async (userEmail, userName, eventTitle) => {
   const mailOptions = {
     from: `Your App Name <${process.env.EMAIL_USER}>`,
     to: userEmail,
-    subject: `🎉 Booking Confirmed: ${eventTitle}`,
+    subject: ` Booking Confirmed: ${eventTitle}`,
     text: `Hi ${userName},\n\nYour booking for the event "${eventTitle}" has been successfully confirmed!\n\nThank you for booking with us. Enjoy your event!`,
     html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
@@ -62,4 +62,4 @@ const sendBookingEmail = async (userEmail, userName, eventTitle) => {
   }
 };
 
-module.exports = { sendOtpEmail };
+module.exports = { sendOtpEmail, sendBookingEmail };
