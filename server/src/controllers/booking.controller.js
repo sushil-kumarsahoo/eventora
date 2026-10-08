@@ -11,7 +11,7 @@ async function sendBookingOTP(req, res) {
       email: req.user.email,
       action: "event-booking",
     });
-    await otpModel.create({ email: req.user.email, action: "event-booking" });
+    await otpModel.create({ email: req.user.email,otp, action: "event-booking" });
     await sendOtpEmail(req.user.email, otp, "event-booking");
     res.json({ message: "OTP sent to email" });
   } catch (error) {
