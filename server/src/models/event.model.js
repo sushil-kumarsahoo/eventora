@@ -30,7 +30,7 @@ const eventSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    image: { type: String },
+    imageUrl: { type: String },
     ticketPrice: {
       type: Number,
       required: true,
