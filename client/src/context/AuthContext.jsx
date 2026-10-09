@@ -6,7 +6,7 @@ import {
 } from "../services/authService";
 import { createContext } from "react";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 const getStoredUser = () => {
   try {
@@ -20,6 +20,7 @@ const getStoredUser = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(getStoredUser);
+  const [loading, setLoading] = useState(false);
 
   const saveSession = (data) => {
     setUser(data);
@@ -49,7 +50,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, verifyOTP, logout }}>
+    <AuthContext.Provider value={{ user, login, register, verifyOTP, logout, loading, setLoading }}>
       {children}
     </AuthContext.Provider>
   );
