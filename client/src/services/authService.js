@@ -5,6 +5,7 @@ export const loginRequest = async (email, password) => {
     const { data } = await api.post("/auth/login", { email, password });
     return data;
   } catch (error) {
+     if (error.response?.data?.needsVerification) throw error.response.data;
     throw new Error(error.response?.data?.message || "Login failed", {cause: error});
   }
 };
