@@ -30,9 +30,14 @@ const AdminDashboard = () => {
       getMyBookings(),
     ]);
     setEvents(Array.isArray(eventsData) ? eventsData : eventsData?.events ?? []);
-    setBookings(bookingsData);
+    setBookings(Array.isArray(bookingsData)
+        ? bookingsData
+        : bookingsData?.bookings ?? []);
+    setEvents(Array.isArray(eventsData)
+        ? eventsData
+        : eventsData?.bookings ?? []);
   } catch (error) {
-    console.error("Error fetching admin data", error);
+    console.error("Error fetching admin data", error.response?.data || error.message);
   } finally {
     setLoading(false);
     }
